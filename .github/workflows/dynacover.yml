@@ -7,7 +7,7 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: erikaheidi/dynacover-actions@v1
+      - uses: erikaheidi/dynacover-actions@v2
         name: 'Update Dynacover image and upload to Twitter'
         env:
           TW_CONSUMER_KEY: ${{ secrets.TW_CONSUMER_KEY}}
