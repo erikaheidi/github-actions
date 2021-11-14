@@ -7,10 +7,19 @@ jobs:
   main:
     runs-on: ubuntu-latest
     steps:
-      - uses: erikaheidi/dynacover-actions@v2
-        name: 'Update Dynacover image and upload to Twitter'
+      - uses: actions/checkout@v2
+        with:
+          path: 'dynacover_custom'
+      - name: 'Update Dynacover image and upload to Twitter'
+        uses: erikaheidi/dynacover-actions@v4
+        with:
+          template: cover_colorful.json
         env:
-          TW_CONSUMER_KEY: ${{ secrets.TW_CONSUMER_KEY}}
-          TW_CONSUMER_SECRET: ${{ secrets.TW_CONSUMER_SECRET}}
-          TW_USER_TOKEN: ${{ secrets.TW_USER_TOKEN}}
-          TW_USER_TOKEN_SECRET: ${{ secrets.TW_USER_TOKEN_SECRET}}
+          #DYNA_TEMPLATES_DIR: ${{ env.GITHUB_WORKSPACE }}/dynacover_custom
+          #DYNA_IMAGES_DIR: ${{ env.GITHUB_WORKSPACE }}/dynacover_custom
+          DYNA_TWITTER_KEY: ${{ secrets.TW_CONSUMER_KEY }}
+          DYNA_TWITTER_SECRET: ${{ secrets.TW_CONSUMER_SECRET }}
+          DYNA_TWITTER_TOKEN: ${{ secrets.TW_USER_TOKEN }}
+          DYNA_TWITTER_TOKEN_SECRET: ${{ secrets.TW_USER_TOKEN_SECRET }}
+          #DYNA_GITHUB_TOKEN: ${{ secrets.DYNA_GITHUB_TOKEN }}
+
